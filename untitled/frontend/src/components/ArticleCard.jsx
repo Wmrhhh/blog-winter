@@ -1,102 +1,94 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiEye, FiCalendar, FiUser, FiTag } from 'react-icons/fi';
+import { FiUser, FiCalendar, FiEye } from 'react-icons/fi';
 
 const ArticleCard = ({ article }) => {
+  const [hovered, setHovered] = React.useState(false);
+
   return (
-    <div className="slide-up" style={{
-      background: 'var(--card)',
-      borderRadius: 'var(--radius)',
-      overflow: 'hidden',
-      boxShadow: 'var(--shadow)',
-      transition: 'transform 0.2s, box-shadow 0.2s',
-      cursor: 'pointer',
-      display: 'flex',
-      flexDirection: 'row',
-    }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = 'var(--shadow)';
-      }}
-    >
-      <Link to={`/articles/${article.id}`} style={{
+    <Link
+      to={`/articles/${article.id}`}
+      style={{
         display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
         textDecoration: 'none',
         color: 'inherit',
-      }}>
-        {/* 左侧内容 */}
-        <div style={{ flex: 1, padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px', minWidth: 0 }}>
-          {/* 分类标签 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-              color: '#fff', fontSize: '11px', fontWeight: 600,
-              padding: '2px 10px', borderRadius: '20px',
-            }}>
-              {article.categoryName || '未分类'}
-            </span>
-          </div>
+        borderRadius: 'var(--radius-sm)',
+        background: 'var(--card)',
+        border: hovered
+          ? '1px solid rgba(99, 102, 241, 0.4)'
+          : '1px solid rgba(99, 102, 241, 0.18)',
+        boxShadow: hovered
+          ? '0 8px 24px rgba(99, 102, 241, 0.15), 0 2px 8px rgba(0,0,0,0.06)'
+          : '0 2px 8px rgba(0,0,0,0.04)',
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        transition: 'all 0.3s ease',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Left gradient accent bar */}
+      <div style={{
+        width: '4px',
+        flexShrink: 0,
+        background: 'linear-gradient(180deg, #6366f1, #ec4899)',
+        opacity: hovered ? 1 : 0.6,
+        transition: 'opacity 0.3s ease',
+      }} />
 
-          {/* 标题 */}
-          <h3 style={{
-            fontSize: '18px',
-            fontWeight: 600,
-            color: 'var(--ink)',
-            margin: 0,
-            lineHeight: 1.4,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}>
-            {article.title}
-          </h3>
+      <div style={{ flex: 1, padding: '20px 20px 20px 16px' }}>
+        {/* Category tag */}
+        <span style={{
+          display: 'inline-block',
+          padding: '3px 12px',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.08))',
+          color: 'var(--primary)',
+          borderRadius: '20px',
+          fontSize: '12px',
+          fontWeight: 600,
+          marginBottom: '10px',
+        }}>
+          {article.categoryName || '未分类'}
+        </span>
 
-          {/* 摘要 */}
-          <p style={{
-            color: 'var(--ink-light)',
-            fontSize: '14px',
-            lineHeight: 1.6,
-            margin: 0,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}>
-            {article.summary || article.content?.substring(0, 120) + '...'}
-          </p>
+        {/* Title */}
+        <h3 style={{
+          fontSize: '17px', fontWeight: 700, color: 'var(--ink)',
+          marginBottom: '8px', lineHeight: 1.4,
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+        }}>
+          {article.title}
+        </h3>
 
-          {/* 元信息 */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            fontSize: '13px',
-            color: 'var(--muted)',
-            marginTop: 'auto',
-          }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <FiUser size={13} />
-              {article.authorName || '匿名'}
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <FiCalendar size={13} />
-              {article.createdAt?.split(' ')[0]}
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <FiEye size={13} />
-              {article.viewCount || 0}
-            </span>
-          </div>
+        {/* Summary */}
+        <p style={{
+          fontSize: '14px', color: 'var(--ink-light)',
+          lineHeight: 1.6, marginBottom: '12px',
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+        }}>
+          {article.summary || article.content?.substring(0, 100) + '...'}
+        </p>
+
+        {/* Meta */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '16px',
+          fontSize: '13px', color: 'var(--muted)',
+        }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <FiUser size={13} /> {article.authorName || '匿名'}
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <FiCalendar size={13} /> {article.createdAt?.split(' ')[0]}
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <FiEye size={13} /> {article.viewCount || 0}
+          </span>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

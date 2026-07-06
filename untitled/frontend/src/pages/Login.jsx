@@ -40,9 +40,7 @@ const Login = () => {
       padding: '40px 24px',
       background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)',
     }}>
-      <div style={{
-        width: '100%', maxWidth: '420px',
-      }}>
+      <div style={{ width: '100%', maxWidth: '420px' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{
@@ -61,13 +59,22 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Card */}
+        {/* Card with border */}
         <div style={{
           background: 'var(--card)',
           borderRadius: 'var(--radius)',
-          boxShadow: 'var(--shadow-lg)',
-          padding: '32px',
+          boxShadow: '0 4px 24px rgba(99, 102, 241, 0.12)',
+          padding: '32px 40px',
+          border: '1px solid rgba(99, 102, 241, 0.2)',
+          position: 'relative',
+          overflow: 'hidden',
         }}>
+          {/* Top accent bar */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
+            background: 'linear-gradient(90deg, #6366f1, #ec4899, #8b5cf6)',
+          }} />
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Username */}
             <div>
@@ -88,7 +95,7 @@ const Login = () => {
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
                   style={{
-                    width: '100%', padding: '12px 14px 12px 40px',
+                    width: '90%', padding: '12px 14px 12px 40px',
                     border: '1px solid var(--rule)', borderRadius: 'var(--radius-sm)',
                     fontSize: '15px', color: 'var(--ink)',
                     background: 'var(--bg)',
@@ -116,7 +123,7 @@ const Login = () => {
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   style={{
-                    width: '100%', padding: '12px 14px 12px 40px',
+                    width: '90%', padding: '12px 14px 12px 40px',
                     border: '1px solid var(--rule)', borderRadius: 'var(--radius-sm)',
                     fontSize: '15px', color: 'var(--ink)',
                     background: 'var(--bg)',

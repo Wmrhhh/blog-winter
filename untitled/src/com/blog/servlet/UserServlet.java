@@ -4,7 +4,6 @@ import com.blog.model.Result;
 import com.blog.model.User;
 import com.blog.service.UserService;
 import com.blog.util.JsonUtil;
-import com.blog.util.MD5Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

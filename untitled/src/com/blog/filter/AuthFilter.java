@@ -1,6 +1,5 @@
 package com.blog.filter;
 
-import com.blog.model.User;
 import com.blog.service.UserService;
 
 import javax.servlet.*;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 权限校验过滤器

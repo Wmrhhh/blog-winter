@@ -56,13 +56,22 @@ const Register = () => {
           </p>
         </div>
 
-        {/* Card */}
+        {/* Card with border */}
         <div style={{
           background: 'var(--card)',
           borderRadius: 'var(--radius)',
-          boxShadow: 'var(--shadow-lg)',
-          padding: '32px',
+          boxShadow: '0 4px 24px rgba(236, 72, 153, 0.12)',
+          padding: '32px 40px',
+          border: '1px solid rgba(236, 72, 153, 0.2)',
+          position: 'relative',
+          overflow: 'hidden',
         }}>
+          {/* Top accent bar */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
+            background: 'linear-gradient(90deg, #ec4899, #6366f1, #8b5cf6)',
+          }} />
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Username */}
             <div>
@@ -83,7 +92,7 @@ const Register = () => {
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
                   style={{
-                    width: '100%', padding: '12px 14px 12px 40px',
+                    width: '90%', padding: '12px 14px 12px 40px',
                     border: '1px solid var(--rule)', borderRadius: 'var(--radius-sm)',
                     fontSize: '15px', color: 'var(--ink)',
                     background: 'var(--bg)',
@@ -111,7 +120,7 @@ const Register = () => {
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   style={{
-                    width: '100%', padding: '12px 14px 12px 40px',
+                    width: '90%', padding: '12px 14px 12px 40px',
                     border: '1px solid var(--rule)', borderRadius: 'var(--radius-sm)',
                     fontSize: '15px', color: 'var(--ink)',
                     background: 'var(--bg)',
@@ -139,7 +148,7 @@ const Register = () => {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   style={{
-                    width: '100%', padding: '12px 14px 12px 40px',
+                    width: '90%', padding: '12px 14px 12px 40px',
                     border: '1px solid var(--rule)', borderRadius: 'var(--radius-sm)',
                     fontSize: '15px', color: 'var(--ink)',
                     background: 'var(--bg)',

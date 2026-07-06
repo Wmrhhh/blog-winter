@@ -1,0 +1,15 @@
+# Java / IDEA
+.idea/
+*.iml
+out/
+target/
+*.class
+
+# Node / Frontend
+node_modules/
+dist/
+.env
+
+# OS
+.DS_Store
+Thumbs.db

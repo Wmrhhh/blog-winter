@@ -96,25 +96,25 @@ const Home = () => {
 
       {/* Dynamic Background Layer */}
       <div style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Floating orbs */}
+        {/* Floating orbs — enhanced contrast */}
         <div style={{
-          position: 'absolute', top: '-100px', left: '-100px', width: '500px', height: '500px',
+          position: 'absolute', top: '-120px', left: '-120px', width: '550px', height: '550px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(99,102,241,0.16) 0%, rgba(99,102,241,0.04) 50%, transparent 70%)',
           animation: 'floatOrb1 18s ease-in-out infinite',
           pointerEvents: 'none', zIndex: 0,
         }} />
         <div style={{
-          position: 'absolute', top: '200px', right: '-80px', width: '400px', height: '400px',
+          position: 'absolute', top: '180px', right: '-100px', width: '450px', height: '450px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(236,72,153,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(236,72,153,0.13) 0%, rgba(236,72,153,0.03) 50%, transparent 70%)',
           animation: 'floatOrb2 22s ease-in-out infinite',
           pointerEvents: 'none', zIndex: 0,
         }} />
         <div style={{
-          position: 'absolute', bottom: '100px', left: '30%', width: '350px', height: '350px',
+          position: 'absolute', bottom: '60px', left: '25%', width: '400px', height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139,92,246,0.09) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(139,92,246,0.14) 0%, rgba(139,92,246,0.03) 50%, transparent 70%)',
           animation: 'floatOrb3 20s ease-in-out infinite',
           pointerEvents: 'none', zIndex: 0,
         }} />
